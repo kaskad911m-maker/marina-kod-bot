@@ -1,0 +1,21 @@
+Новый проект только для @marina_kod_bot (кнопка «Мой код», мини-приложение).
+Не путать с magiya-chisel-bot (Гуру и Арви).
+
+1) GitHub
+   - Создай новый репозиторий, например: marina-kod-bot
+   - Залей эту папку (bot.py, requirements.txt, Procfile, runtime.txt, .gitignore)
+
+2) Railway — НОВЫЙ проект (не blissful-bravery)
+   - New Project → Deploy from GitHub → выбери marina-kod-bot
+   - После деплоя: сервис → Settings → если нужно, укажи Start Command: python bot.py
+     (или оставь Procfile: worker — в Railway иногда выбирают процесс worker вручную)
+
+3) Variables (переменные сервиса)
+   TELEGRAM_TOKEN = токен именно @marina_kod_bot из BotFather
+   (опционально) MINI_APP_URL = твой URL мини-приложения на Vercel
+
+4) Проверка
+   - В Telegram открой @marina_kod_bot → /start → должны быть кнопки
+   - В логах Railway не должно быть ошибок про токен
+
+Старый проект blissful-bravery = только magiya-chisel-bot + токен бота «Магии чисел».
