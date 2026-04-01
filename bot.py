@@ -4,6 +4,7 @@
 """
 import logging
 import os
+import sys
 
 from dotenv import load_dotenv
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, WebAppInfo
@@ -45,8 +46,12 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
-    if not TELEGRAM_TOKEN:
-        raise SystemExit("Нет TELEGRAM_TOKEN в переменных окружения")
+    if not TELEGRAM_TOKEN or not TELEGRAM_TOKEN.strip():
+        logging.error(
+            "Нет TELEGRAM_TOKEN. Railway → сервис worker → Variables → "
+            "добавь TELEGRAM_TOKEN = токен @marina_kod_bot из BotFather"
+        )
+        sys.exit(1)
     app = Application.builder().token(TELEGRAM_TOKEN).build()
     app.add_handler(CommandHandler("start", cmd_start))
     logger.info("marina-kod-bot запущен, MINI_APP_URL=%s", MINI_APP_URL)
